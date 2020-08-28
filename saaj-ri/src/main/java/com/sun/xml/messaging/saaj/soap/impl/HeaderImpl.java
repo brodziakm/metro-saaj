@@ -53,7 +53,7 @@ public abstract class HeaderImpl extends ElementImpl implements SOAPHeader {
     public SOAPHeaderElement addHeaderElement(Name name) throws SOAPException {
         SOAPElement newHeaderElement =
             ElementFactory.createNamedElement(
-                ((SOAPDocument) getOwnerDocument()).getDocument(),
+                getSoapDocument().getDocument(),
                 name.getLocalName(),
                 name.getPrefix(),
                 name.getURI());
@@ -77,7 +77,7 @@ public abstract class HeaderImpl extends ElementImpl implements SOAPHeader {
     public SOAPHeaderElement addHeaderElement(QName name) throws SOAPException {
         SOAPElement newHeaderElement =
             ElementFactory.createNamedElement(
-                ((SOAPDocument) getOwnerDocument()).getDocument(),
+                getSoapDocument().getDocument(),
                 name.getLocalPart(),
                 name.getPrefix(),
                 name.getNamespaceURI());

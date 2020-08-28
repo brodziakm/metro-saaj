@@ -39,13 +39,13 @@ public class Detail1_1Impl extends DetailImpl {
     @Override
     protected DetailEntry createDetailEntry(Name name) {
         return new DetailEntry1_1Impl(
-            (SOAPDocumentImpl) getOwnerDocument(),
+            getSoapDocument(),
             name);
     }
     @Override
     protected DetailEntry createDetailEntry(QName name) {
         return new DetailEntry1_1Impl(
-            (SOAPDocumentImpl) getOwnerDocument(),
+            getSoapDocument(),
             name);
     }
 

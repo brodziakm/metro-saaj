@@ -39,7 +39,7 @@ public class BodyElement1_1Impl extends BodyElementImpl {
     @Override
     public SOAPElement setElementQName(QName newName) throws SOAPException {
         BodyElementImpl copy =
-            new BodyElement1_1Impl((SOAPDocumentImpl) getOwnerDocument(), newName);
+            new BodyElement1_1Impl(getSoapDocument(), newName);
         return replaceElementWithSOAPElement(this,copy);
     }
 }

@@ -40,7 +40,7 @@ public class DetailEntry1_2Impl extends DetailEntryImpl {
     @Override
     public SOAPElement setElementQName(QName newName) throws SOAPException {
         DetailEntryImpl copy =
-            new DetailEntry1_2Impl((SOAPDocumentImpl) getOwnerDocument(), newName);
+            new DetailEntry1_2Impl(getSoapDocument(), newName);
         return replaceElementWithSOAPElement(this,copy);
     }
 

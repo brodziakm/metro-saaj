@@ -427,7 +427,7 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
     @Override
     public SOAPElement setElementQName(QName newName) throws SOAPException {
         ElementImpl copy =
-            new ElementImpl((SOAPDocumentImpl) getOwnerDocument(), newName);
+            new ElementImpl(getSoapDocument(), newName);
         return replaceElementWithSOAPElement(this,copy);
     }
 

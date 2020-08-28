@@ -48,7 +48,7 @@ public class HeaderElement1_1Impl extends HeaderElementImpl {
     @Override
     public SOAPElement setElementQName(QName newName) throws SOAPException {
         HeaderElementImpl copy =
-            new HeaderElement1_1Impl((SOAPDocumentImpl) getOwnerDocument(), newName);
+            new HeaderElement1_1Impl(getSoapDocument(), newName);
         return replaceElementWithSOAPElement(this,copy);
     }
 
