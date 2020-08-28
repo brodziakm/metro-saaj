@@ -104,6 +104,9 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
 
     @Override
     public Attr removeAttributeNode(Attr oldAttr) throws DOMException {
+    	if (oldAttr instanceof AttrDelegate) {
+    		oldAttr = ((AttrDelegate)oldAttr).delegate;
+    	}
         return element.removeAttributeNode(oldAttr);
     }
 
@@ -592,12 +595,12 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
 
         if (isNamespaceQualified(name)) {
             return (SOAPElement)
-                getOwnerDocument().createElementNS(
+                getSoapDocument().createElementNS(
                                        name.getURI(),
                                        name.getQualifiedName());
         } else {
             return (SOAPElement)
-                getOwnerDocument().createElement(name.getQualifiedName());
+                getSoapDocument().createElement(name.getQualifiedName());
         }
     }
 
@@ -605,12 +608,12 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
 
         if (isNamespaceQualified(name)) {
             return (SOAPElement)
-                getOwnerDocument().createElementNS(
+                getSoapDocument().createElementNS(
                                        name.getNamespaceURI(),
                                        getQualifiedName(name));
         } else {
             return (SOAPElement)
-                getOwnerDocument().createElement(getQualifiedName(name));
+                getSoapDocument().createElement(getQualifiedName(name));
         }
     }
 
@@ -1610,7 +1613,13 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
 
     @Override
     public Attr getAttributeNodeNS(String namespaceURI, String localName) throws DOMException {
-        return element.getAttributeNodeNS(namespaceURI, localName);
+		Attr original = element.getAttributeNodeNS(namespaceURI, localName);
+		return original == null ? null : new AttrDelegate(original) {
+			@Override
+			public Document getOwnerDocument() {
+				return ElementImpl.this.getOwnerDocument();
+			}
+		};
     }
 
     @Override

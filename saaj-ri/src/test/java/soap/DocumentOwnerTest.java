@@ -1,14 +1,15 @@
 package soap;
 
-import com.sun.xml.messaging.saaj.soap.SOAPDocumentImpl;
-import junit.framework.TestCase;
+import java.io.InputStream;
+import java.net.URL;
+
+import javax.xml.soap.MessageFactory;
+
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import javax.xml.soap.MessageFactory;
-import java.io.InputStream;
-import java.net.URL;
+import junit.framework.TestCase;
 
 /**
  * Original source taken from https://github.com/coheigea/testcases/tree/master/misc/saaj
@@ -31,7 +32,7 @@ public class DocumentOwnerTest extends TestCase {
         Document uriOwnerDocument = uriAttr.getOwnerDocument();
         Document refOwnerDocument = refElement.getOwnerDocument();
 
-        assertEquals("Inconsistent document",  refOwnerDocument, uriOwnerDocument);
+        assertSame("Inconsistent document",  refOwnerDocument, uriOwnerDocument);
         // Ideally the below will be true, but ultimately it shouldn't matter
         // assertEquals("Unexpected document type", SOAPDocumentImpl.class, uriOwnerDocument.getClass());
         // assertEquals("Unexpected document type", SOAPDocumentImpl.class, refOwnerDocument.getClass());
