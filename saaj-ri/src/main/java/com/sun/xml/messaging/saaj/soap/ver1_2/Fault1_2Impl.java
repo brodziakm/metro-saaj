@@ -111,13 +111,13 @@ public class Fault1_2Impl extends FaultImpl {
     @Override
     protected DetailImpl createDetail() {
         return new Detail1_2Impl(
-                       ((SOAPDocument) getOwnerDocument()).getDocument());
+                       getSoapDocument().getDocument());
     }
 
     @Override
     protected FaultElementImpl createSOAPFaultElement(String localName) {
         return new FaultElement1_2Impl(
-                       ((SOAPDocument) getOwnerDocument()).getDocument(),
+                       getSoapDocument().getDocument(),
                        localName);
     }
 
@@ -582,14 +582,14 @@ public class Fault1_2Impl extends FaultImpl {
     @Override
      protected FaultElementImpl createSOAPFaultElement(QName qname) {
          return new FaultElement1_2Impl(
-                       ((SOAPDocument) getOwnerDocument()).getDocument(),
+                       getSoapDocument().getDocument(),
                        qname);
     }
      
     @Override
     protected FaultElementImpl createSOAPFaultElement(Name qname) {
          return new FaultElement1_2Impl(
-                       ((SOAPDocument) getOwnerDocument()).getDocument(),
+                       getSoapDocument().getDocument(),
                        (NameImpl)qname);
     }
 

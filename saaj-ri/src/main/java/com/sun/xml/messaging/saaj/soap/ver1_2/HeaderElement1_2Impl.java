@@ -40,7 +40,7 @@ public class HeaderElement1_2Impl extends HeaderElementImpl {
     @Override
     public SOAPElement setElementQName(QName newName) throws SOAPException {
         HeaderElementImpl copy =
-            new HeaderElement1_2Impl((SOAPDocumentImpl)getOwnerDocument(), newName);
+            new HeaderElement1_2Impl(getSoapDocument(), newName);
         return replaceElementWithSOAPElement(this,copy);
     }
 

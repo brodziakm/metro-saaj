@@ -47,14 +47,14 @@ public class Detail1_2Impl extends DetailImpl {
     @Override
     protected DetailEntry createDetailEntry(Name name) {
         return new DetailEntry1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 
     @Override
     protected DetailEntry createDetailEntry(QName name) {
         return new DetailEntry1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 

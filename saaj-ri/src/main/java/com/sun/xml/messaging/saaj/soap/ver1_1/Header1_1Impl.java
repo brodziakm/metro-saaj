@@ -79,13 +79,13 @@ public class Header1_1Impl extends HeaderImpl {
     @Override
     protected SOAPHeaderElement createHeaderElement(Name name) {
         return new HeaderElement1_1Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
     @Override
     protected SOAPHeaderElement createHeaderElement(QName name) {
         return new HeaderElement1_1Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 }
