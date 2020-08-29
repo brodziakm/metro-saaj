@@ -104,8 +104,8 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
 
     @Override
     public Attr removeAttributeNode(Attr oldAttr) throws DOMException {
-    	if (oldAttr instanceof AttrDelegate) {
-    		oldAttr = ((AttrDelegate)oldAttr).delegate;
+    	if (oldAttr instanceof AttrImpl) {
+    		oldAttr = ((AttrImpl)oldAttr).delegate;
     	}
         return element.removeAttributeNode(oldAttr);
     }
@@ -1614,12 +1614,7 @@ public class ElementImpl implements SOAPElement, SOAPBodyElement {
     @Override
     public Attr getAttributeNodeNS(String namespaceURI, String localName) throws DOMException {
 		Attr original = element.getAttributeNodeNS(namespaceURI, localName);
-		return original == null ? null : new AttrDelegate(original) {
-			@Override
-			public Document getOwnerDocument() {
-				return ElementImpl.this.getOwnerDocument();
-			}
-		};
+		return original == null ? null : new AttrImpl(soapDocument, original);
     }
 
     @Override

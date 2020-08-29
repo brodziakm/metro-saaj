@@ -1,5 +1,7 @@
 package com.sun.xml.messaging.saaj.soap.impl;
 
+import com.sun.xml.messaging.saaj.soap.SOAPDocument;
+import com.sun.xml.messaging.saaj.soap.SOAPDocumentImpl;
 import org.w3c.dom.Attr;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
@@ -10,11 +12,14 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.TypeInfo;
 import org.w3c.dom.UserDataHandler;
 
-abstract class AttrDelegate implements Attr {
+public class AttrImpl implements Attr {
+
+	private final SOAPDocumentImpl soapDocument;
 
 	final Attr delegate;
 
-	AttrDelegate(Attr attr) {
+	AttrImpl(SOAPDocumentImpl soapDocument, Attr attr) {
+		this.soapDocument = soapDocument;
 		this.delegate = attr;
 	}
 
@@ -75,7 +80,7 @@ abstract class AttrDelegate implements Attr {
 	}
 
 	public Document getOwnerDocument() {
-		return delegate.getOwnerDocument();
+		return soapDocument;
 	}
 
 	public Node insertBefore(Node newChild, Node refChild) throws DOMException {

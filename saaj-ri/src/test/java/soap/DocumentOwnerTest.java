@@ -5,6 +5,7 @@ import java.net.URL;
 
 import javax.xml.soap.MessageFactory;
 
+import com.sun.xml.messaging.saaj.soap.SOAPDocumentImpl;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -33,9 +34,7 @@ public class DocumentOwnerTest extends TestCase {
         Document refOwnerDocument = refElement.getOwnerDocument();
 
         assertSame("Inconsistent document",  refOwnerDocument, uriOwnerDocument);
-        // Ideally the below will be true, but ultimately it shouldn't matter
-        // assertEquals("Unexpected document type", SOAPDocumentImpl.class, uriOwnerDocument.getClass());
-        // assertEquals("Unexpected document type", SOAPDocumentImpl.class, refOwnerDocument.getClass());
+        assertEquals("Unexpected document type", SOAPDocumentImpl.class, uriOwnerDocument.getClass());
     }
 
     private static Document read(URL file) throws Exception {
