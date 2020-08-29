@@ -172,7 +172,7 @@ public abstract class BodyImpl extends ElementImpl implements SOAPBody {
     public SOAPBodyElement addBodyElement(Name name) throws SOAPException {
         SOAPBodyElement newBodyElement =
             (SOAPBodyElement) ElementFactory.createNamedElement(
-                ((SOAPDocument) getOwnerDocument()).getDocument(),
+                getSoapDocument().getDocument(),
                 name.getLocalName(),
                 name.getPrefix(),
                 name.getURI());
@@ -187,7 +187,7 @@ public abstract class BodyImpl extends ElementImpl implements SOAPBody {
     public SOAPBodyElement addBodyElement(QName qname) throws SOAPException {
         SOAPBodyElement newBodyElement =
             (SOAPBodyElement) ElementFactory.createNamedElement(
-                ((SOAPDocument) getOwnerDocument()).getDocument(),
+                getSoapDocument().getDocument(),
                 qname.getLocalPart(),
                 qname.getPrefix(),
                 qname.getNamespaceURI());

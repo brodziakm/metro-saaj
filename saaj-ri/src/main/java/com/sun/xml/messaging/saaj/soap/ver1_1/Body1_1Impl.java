@@ -48,14 +48,14 @@ public class Body1_1Impl extends BodyImpl {
     @Override
     protected SOAPBodyElement createBodyElement(Name name) {
         return new BodyElement1_1Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 
     @Override
     protected SOAPBodyElement createBodyElement(QName name) {
         return new BodyElement1_1Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 
@@ -73,7 +73,7 @@ public class Body1_1Impl extends BodyImpl {
     @Override
     protected SOAPFault createFaultElement() {
         return new Fault1_1Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(), getPrefix());
+            getSoapDocument().getDocument(), getPrefix());
     }
 
 }

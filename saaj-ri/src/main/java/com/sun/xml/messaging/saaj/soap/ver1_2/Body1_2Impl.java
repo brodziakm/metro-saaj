@@ -50,13 +50,13 @@ public class Body1_2Impl extends BodyImpl {
     @Override
     protected SOAPBodyElement createBodyElement(Name name) {
         return new BodyElement1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
     @Override
     protected SOAPBodyElement createBodyElement(QName name) {
         return new BodyElement1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 
@@ -122,7 +122,7 @@ public class Body1_2Impl extends BodyImpl {
     @Override
     protected SOAPFault createFaultElement() {
         return new Fault1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(), getPrefix());
+            getSoapDocument().getDocument(), getPrefix());
     }
 
     /*

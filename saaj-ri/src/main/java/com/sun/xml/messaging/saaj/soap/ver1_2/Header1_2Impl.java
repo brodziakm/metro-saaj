@@ -109,7 +109,7 @@ public class Header1_2Impl extends HeaderImpl {
             throw new SOAPExceptionImpl("SOAP 1.2 header elements must be namespace qualified");
         }
         return new HeaderElement1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 
@@ -122,7 +122,7 @@ public class Header1_2Impl extends HeaderImpl {
             throw new SOAPExceptionImpl("SOAP 1.2 header elements must be namespace qualified");
         }
         return new HeaderElement1_2Impl(
-            ((SOAPDocument) getOwnerDocument()).getDocument(),
+            getSoapDocument().getDocument(),
             name);
     }
 

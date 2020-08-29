@@ -59,7 +59,7 @@ public class FaultElement1_1Impl extends FaultElementImpl {
     public SOAPElement setElementQName(QName newName) throws SOAPException {
         if (!isStandardFaultElement()) {
             FaultElement1_1Impl copy =
-                new FaultElement1_1Impl((SOAPDocumentImpl) getOwnerDocument(), newName);
+                new FaultElement1_1Impl(getSoapDocument(), newName);
             return replaceElementWithSOAPElement(this,copy);
         } else {
             return super.setElementQName(newName);
